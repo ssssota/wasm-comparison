@@ -1,0 +1,4 @@
+{
+  "extends": "../../node_modules/.pnpm/assemblyscript@0.26.5/node_modules/assemblyscript/std/assembly.json",
+  "include": ["./**/*.ts"]
+}

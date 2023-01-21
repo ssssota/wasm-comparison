@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "tiehuis.zig",
+    "rust-lang.rust-analyzer",
+    "esbenp.prettier-vscode"
+  ]
+}

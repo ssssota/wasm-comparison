@@ -1,0 +1,28 @@
+{
+  "name": "wasm-comparison",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build-wasm": "pnpm build-wasm:zig && pnpm build-wasm:rust && pnpm build-wasm:as",
+    "build-wasm:zig": "cd zig && zig build -Dtarget=wasm32-freestanding -Drelease-small",
+    "build-wasm:rust": "cd rust && wasm-pack build --target=web",
+    "build-wasm:as": "pnpm --dir assemblyscript asbuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssssota/wasm-comparison.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ssssota/wasm-comparison/issues"
+  },
+  "homepage": "https://github.com/ssssota/wasm-comparison#readme",
+  "packageManager": "pnpm@7.25.1",
+  "devDependencies": {
+    "vite": "^4.0.4"
+  }
+}
