@@ -9,8 +9,13 @@ const tarai: Exports["tarai"] = (x, y, z) => {
 };
 
 const log = (...msg: unknown[]) => {
-  document.body.insertAdjacentHTML("beforeend", `<pre>${msg.join(" ")}</pre>`);
-  console.log(...msg);
+  try {
+    console.log(...msg);
+    document.body.insertAdjacentHTML(
+      "beforeend",
+      `<pre>${msg.join(" ")}</pre>`
+    );
+  } catch {}
 };
 
 const load = (name: string) => (buf: ArrayBuffer) => {
@@ -36,8 +41,9 @@ const test = (name: string) => (exp: Exports) => {
 };
 
 const run = (name: string, wasm: string) => () =>
-  fetch(wasm)
+  fetch(new URL(wasm, import.meta.url))
     .then((res) => res.arrayBuffer())
+    // .catch(() => import("node:fs").then((fs) => fs.readFileSync(wasm))) // Comment out when using Deno
     .then(load(name))
     .then(test(name));
 
